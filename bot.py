@@ -32,7 +32,8 @@ PROMOTION_CHANNEL_ID = one_id("PROMOTION_CHANNEL_ID")
 INFRACTION_CHANNEL_ID = one_id("INFRACTION_CHANNEL_ID")
 
 # -------------------------------------------------------------- DATABASE ----
-db = sqlite3.connect("bot.db")
+DB_PATH = os.getenv("DB_PATH", "bot.db")  # on Railway, set to /data/bot.db
+db = sqlite3.connect(DB_PATH)
 db.row_factory = sqlite3.Row
 db.executescript(
     """
